@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST YTplayer</title>
+
+    <link href='//fonts.googleapis.com/css?family=Lekton|Lobster' rel='stylesheet' type='text/css'>
+    <link href="/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/jquery.mb.YTPlayer.js"></script>
+    <!-- <script src="assets/apikey.js"></script> -->
+
+        
+    <script>
+        var myPlayer;
+        function showInfo(info) {
+        $("#info").stop().delay(500).html(info).stop().fadeIn().delay(5000).fadeOut();
+        }
+
+        jQuery(function () {
+        myPlayer = jQuery("#bgndVideo").YTPlayer();
+        myPlayer.on("YTPData", function (e) {
+            showInfo(e.prop.title + "<br><br>@" + e.prop.channelTitle);
+        });
+        });
+    </script>
+</head>
+<body>
+
+    <div id="wrapper" style="position:relative; padding:10px 0;z-index:10">
+
+        <a id="bgndVideo" class="player"
+           data-property="{
+           videoURL:'https://www.youtube.com/watch?v=6Q0Pd53mojY',
+           containment:'body',
+           showControls:true,
+           autoPlay:true,
+           loop:true,
+           vol:50,
+           mute:true,
+           startAt:40,
+           stopAt:150,
+           opacity:1,
+           addRaster:true,
+           quality:'small',
+           abundance:.25,
+           coverImage:'assets/bg-1.jpg'
+           }"
+        >My video</a>
+       
+    </div>
+
+    <div id="P1" class="player" 
+     data-property="{
+        videoURL:'https://www.youtube.com/watch?v=qct0JLjaHDc',
+        containment:'self',
+        startAt:50,
+        mute:false,
+        autoPlay:false,
+        loop:false,
+        opacity:.8
+        }">
+
+    <h3>123</h3>
+    </div>
+
+    
+</body>
+</html>
