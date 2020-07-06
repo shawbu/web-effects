@@ -6,10 +6,10 @@
     <title>TEST YTplayer</title>
 
     <link href='//fonts.googleapis.com/css?family=Lekton|Lobster' rel='stylesheet' type='text/css'>
-    <link href="/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+    <link href="jquery.mb.YTPlayer.min.js" media="all" rel="stylesheet" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/jquery.mb.YTPlayer.js"></script>
+    <script src="jquery.mb.YTPlayer.js"></script>
     <!-- <script src="assets/apikey.js"></script> -->
 
         
@@ -20,18 +20,31 @@
         }
 
         jQuery(function () {
-        myPlayer = jQuery("#bgndVideo").YTPlayer();
+        myPlayer = jQuery("#P1").YTPlayer();
         myPlayer.on("YTPData", function (e) {
             showInfo(e.prop.title + "<br><br>@" + e.prop.channelTitle);
         });
         });
     </script>
+        <script>
+            var myPlayer;
+            function showInfo(info) {
+            $("#info").stop().delay(500).html(info).stop().fadeIn().delay(5000).fadeOut();
+            }
+    
+            jQuery(function () {
+            myPlayer = jQuery("#bgndVideo").YTPlayer();
+            myPlayer.on("YTPData", function (e) {
+                showInfo(e.prop.title + "<br><br>@" + e.prop.channelTitle);
+            });
+            });
+        </script>
 </head>
 <body>
 
     <div id="wrapper" style="position:relative; padding:10px 0;z-index:10">
 
-        <a id="bgndVideo" class="player"
+        <!-- <a id="bgndVideo" class="player"
            data-property="{
            videoURL:'https://www.youtube.com/watch?v=6Q0Pd53mojY',
            containment:'body',
@@ -49,7 +62,7 @@
            coverImage:'assets/bg-1.jpg'
            }"
         >My video</a>
-       
+        -->
     </div>
 
     <div id="P1" class="player" 
@@ -58,13 +71,22 @@
         containment:'self',
         startAt:50,
         mute:false,
-        autoPlay:false,
+        autoPlay:true,
         loop:false,
-        opacity:.8
+        brightness: 10,
+        opacity:1
         }">
 
     <h3>123</h3>
+    <button onclick="jQuery('#P1').YTPPause()">pause</button>
+    <button onclick="jQuery('#P1').YTPPlay()">play</button>
+    <button onclick="jQuery('#P1').YTPSeekTo(200)">seek to 20 sec.</button>
     </div>
+    <div id="bgndVideo" class="player" data-property="{
+        videoURL:'http://youtu.be/BsekcY04xvQ',
+        containment:'body',
+        useOnMobile:false, autoPlay:true, mute:true, startAt:0, opacity:1}"></div>
+
 
     
 </body>
