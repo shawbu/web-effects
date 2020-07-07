@@ -10,8 +10,14 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="jquery.mb.YTPlayer.js"></script>
-    <!-- <script src="assets/apikey.js"></script> -->
+   
+    <style>
 
+        .player{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
         
     <script>
         var myPlayer;
@@ -39,55 +45,54 @@
             });
             });
         </script>
+          <script>
+            var myPlayer;
+            function showInfo(info) {
+            $("#info").stop().delay(500).html(info).stop().fadeIn().delay(5000).fadeOut();
+            }
+    
+            jQuery(function () {
+            myPlayer = jQuery("#P2").YTPlayer();
+            myPlayer.on("YTPData", function (e) {
+                showInfo(e.prop.title + "<br><br>@" + e.prop.channelTitle);
+            });
+            });
+        </script>
 </head>
 <body>
 
-    <div id="wrapper" style="position:relative; padding:10px 0;z-index:10">
-
-        <!-- <a id="bgndVideo" class="player"
-           data-property="{
-           videoURL:'https://www.youtube.com/watch?v=6Q0Pd53mojY',
-           containment:'body',
-           showControls:true,
-           autoPlay:true,
-           loop:true,
-           vol:50,
-           mute:true,
-           startAt:40,
-           stopAt:150,
-           opacity:1,
-           addRaster:true,
-           quality:'small',
-           abundance:.25,
-           coverImage:'assets/bg-1.jpg'
-           }"
-        >My video</a>
-        -->
-    </div>
-
     <div id="P1" class="player" 
-     data-property="{
-        videoURL:'https://www.youtube.com/watch?v=qct0JLjaHDc',
-        containment:'self',
-        startAt:50,
-        mute:false,
-        autoPlay:true,
-        loop:false,
-        brightness: 10,
-        opacity:1
-        }">
-
-    <h3>123</h3>
-    <button onclick="jQuery('#P1').YTPPause()">pause</button>
-    <button onclick="jQuery('#P1').YTPPlay()">play</button>
-    <button onclick="jQuery('#P1').YTPSeekTo(200)">seek to 20 sec.</button>
+    data-property="{videoURL:'https://www.youtube.com/watch?v=82a5foM0OTM',
+    containment:'self',
+    startAt:50,
+    mute:false,
+    autoPlay:false,
+    loop:false,opacity:.8,
+    showControls:true,
+    }">
     </div>
-    <div id="bgndVideo" class="player" data-property="{
-        videoURL:'http://youtu.be/BsekcY04xvQ',
-        containment:'body',
-        useOnMobile:false, autoPlay:true, mute:true, startAt:0, opacity:1}"></div>
-
-
+    <!-- <div id="bgndVideo" class="player" 
+     data-property="{videoURL:'https://www.youtube.com/watch?v=82a5foM0OTM',
+     containment:'body',autoPlay:true, mute:false,
+     showControls:true,
     
+    startAt:120, opacity:1}">
+    </div> -->
+    <button onclick="jQuery('#bgndVideo').YTPPlay()">play</button>
+    <button onclick="jQuery('#bgndVideo').YTPPause()">pause</button>
+    <button onclick="jQuery('#bgndVideo').YTPToggleVolume()">unmute/unmute</button>
+    <button onclick="alert(jQuery('#bgndVideo').YTPGetPlayer().getPlayerState())">get state</button>
+    <button onclick="console.log(jQuery('#bgndVideo').YTPGetVideoData())">video info</button>
+    <button onclick="alert(jQuery('#bgndVideo').YTPGetTime())">Get time</button>
+    <button onclick="alert(jQuery('#bgndVideo').YTPGetAnchor())">Get anchor</button>
+    <button onclick="jQuery('#bgndVideo').YTPSetAnchor('center,center')">Set anchor</button>
+    <button onclick="jQuery('#bgndVideo').YTPFullscreen()">bring to front / send to back</button>
+
+    <div id="bgndVideo" class="player" 
+        data-property="{videoURL:'https://www.youtube.com/watch?v=82a5foM0OTM',
+        containment:'#bgndVideo', showControls:true,
+        startAt:100,mute:false,autoPlay:false,loop:false,opacity:1}">
+    </div>
+<div id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=82a5foM0OTM',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:1}">My video</div>
 </body>
 </html>
