@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+}
+h2{
+    font-size: 2rem;
+}
+h3{
+    font-size: 1.6rem;
+}
+section{
+    padding: 1REM;
+}
+/* nav */
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: rgb(230, 172, 172);
+}
+/* banner */
+.banner{
+    height: 500px;
+    background-color: rgb(224, 250, 182);
+}
+/* news */
+.news{
+    height: 500px;
+    background-color: rgb(255,225,194);
+    padding: 1rem;
+}
+.sec-title{
+    text-align: center;
+    position: relative;
+}
+.sec-title h3{
+    position: relative;
+}
+.sec-title h3::before{
+    content: '';
+    display: inline-block;
+    width:50px;
+    height: 1px;
+    background-color: #111;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-100%);
+    
+}
+.sec-title h3::after{
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    background-color: #111;
+    position: absolute;
+    top: 50%;
+}
+.slider{
+    width: 80%;
+    height: 300px;
+    background-color: #fff;
+    margin: 1rem auto;
+}
+.btnbox{
+    width: 160px;
+    background-color: rgb(105,78,61);
+    padding: 0.5rem;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    padding: 1rem;
+}
+.btn-more{
+
+}
+.btn-more::before{
+    content: '>';
+    position: absolute;
+    right:1rem;
+    transition: 1s;
+}
+.btnbox:hover .btn-more::before{
+    right:3px;
+    transition: 1s;
+}
+/* introduction */
+.introduction{
+    height: 500px;
+    background-color: rgb(251,174,143);
+}
+/* shopping */
+.shopping{
+    height: 500px;
+    background-color: rgb(255,225,194);
+}
+/* wall */
+.wall{
+    height: 500px;
+    background-color: rgb(255,240,225);
+}
+/* footer */
+.footer{
+    
+    background-color: rgb(251,174,136);
+}
+.footer-content{
+    text-align: center;
+    padding: 1rem;
+}
+.copyright{
+    text-align: center;
+    background-color: rgb(90,75,59);
+    padding: 1rem;
+    color: #888;
+}
